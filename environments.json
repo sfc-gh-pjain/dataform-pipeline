@@ -5,13 +5,15 @@
       "configOverride": {
         "defaultDatabase": "ytprod"
       },
-      "schedules": [
-        {
-          "name": "new_schedule",
-          "cron": "15 12 * * *"
-        }
-      ],
       "gitRef": "master"
+    }
+  ],
+  "notificationChannels": [
+    {
+      "name": "slack_notification_channel",
+      "slack": {
+        "webhookUrl": "https://hooks.slack.com/services/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"
+      }
     }
   ]
 }
