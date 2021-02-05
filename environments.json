@@ -18,6 +18,19 @@
               ]
             }
           ]
+        },
+        {
+          "name": "new_schedule",
+          "cron": "7 21 * * fri",
+          "notify": [
+            {
+              "channel": "slack_notification_channel",
+              "statuses": [
+                "SUCCESS",
+                "FAILURE"
+              ]
+            }
+          ]
         }
       ],
       "gitRef": "master"
