@@ -6,11 +6,11 @@ config {
 
 select distinct
     f.video_id as video_id,
-    f.category_id as category_id,
-    f.views_count as views_count,
-    f.likes as likes,
-    f.dislikes as dislikes,
-    f.comment_count as comment_count,
+    ceil(avg(f.category_id),0) as category_id,
+    ceil(avg(f.views_count),0) as views_count,
+    ceil(avg(f.likes),0) as likes,
+    ceil(avg(f.dislikes),0) as dislikes,
+    ceil(avg(f.comment_count),0) as comment_count,
     current_date() as start_date,
     to_date('12-31-9999','mm-dd-yyyy') as end_date,
     'Y' as valid_flag
@@ -19,6 +19,7 @@ from
 where 
     f.video_id = l.video_id
     and f.trending_date = l.last_update
+group by 1,7,8,9
 
 union all
 

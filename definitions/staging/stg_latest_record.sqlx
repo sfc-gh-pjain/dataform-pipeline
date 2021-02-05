@@ -3,10 +3,6 @@ config {
   schema: "ytstage"
 }
 
--- select *
--- from 
---   ${ref("table_name")} / schema.table_name
--- read more about ref() in the documentation tab -->
 
 select 
   video_id::varchar(255) as video_id
