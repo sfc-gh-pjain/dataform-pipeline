@@ -1,11 +1,12 @@
 config {
   type: "table"
+  ,schema: "ytstage"
 }
 
 SELECT DISTINCT
-        items.value:id::NUMBER as "category_id"
-        ,items.value:snippet:title::string as "title"
-        ,items.value:snippet:assignable::BOOLEAN as "assignable"
+        items.value:id::NUMBER as category_id
+        ,items.value:snippet:title::string as title
+        ,items.value:snippet:assignable::BOOLEAN as assignable
 
     FROM YTDEMO.YTRAW.RAW_CATEGORY_JSON
         ,LATERAL FLATTEN (JSON_DATA:items) as items

@@ -7,5 +7,5 @@ config {
 select distinct
     video_id::varchar(255) as video_id,
     title as title,
-    region::varchar(5) as region
+    TO_TIMESTAMP_NTZ(PUBLISH_TIME) as PUBLISH_TIME
     from "YTDEMO"."YTRAW"."RAW_VIDEOS_CSV"

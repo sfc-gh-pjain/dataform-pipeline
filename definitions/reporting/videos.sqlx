@@ -1,0 +1,11 @@
+config {
+  type: "table"
+  ,schema: "ytrep"
+}
+
+select 
+video_id,
+title,
+publish_time 
+
+from ytstage.stg_videos

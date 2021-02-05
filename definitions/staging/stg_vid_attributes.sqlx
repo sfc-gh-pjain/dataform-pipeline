@@ -1,0 +1,16 @@
+config {
+  type: "table"
+}
+
+
+select 
+		 VIDEO_ID::varchar(255) as VIDEO_ID
+		,to_date(TRENDING_DATE,'yy.dd.mm') as TRENDING_DATE
+		,TITLE as TITLE
+		,CHANNEL_TITLE as CHANNEL_TITLE
+		,CATEGORY_ID::number as CATEGORY_ID
+		,COMMENTS_DISABLED::boolean as COMMENTS_DISABLED
+		,RATINGS_DISABLED::boolean as RATINGS_DISABLED
+		,VIDEO_ERROR_OR_REMOVED::boolean as VIDEO_ERROR_OR_REMOVED
+		,region::varchar(5) as region
+    from YTRAW.RAW_VIDEOS_CSV

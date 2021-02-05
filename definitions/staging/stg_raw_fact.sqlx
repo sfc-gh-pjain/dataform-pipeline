@@ -1,8 +1,15 @@
 config {
-  type: "table"
+  type: "table",
+  schema: "ytstage"
 }
 
--- select *
--- from 
---   ${ref("table_name")} / schema.table_name
--- read more about ref() in the documentation tab -->
+
+select 
+  VIDEO_ID::varchar(255) as VIDEO_ID  
+  ,to_date(TRENDING_DATE,'yy.dd.mm') as TRENDING_DATE  
+  ,CATEGORY_ID::number as CATEGORY_ID
+  ,VIEWS_COUNT::number as VIEWS_COUNT
+  ,LIKES::number as LIKES
+  ,DISLIKES::number as DISLIKES
+  ,COMMENT_COUNT::number as COMMENT_COUNT
+from ytraw.raw_videos_csv

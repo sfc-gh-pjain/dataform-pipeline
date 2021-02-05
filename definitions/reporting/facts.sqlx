@@ -1,0 +1,39 @@
+config {
+  type: "table",
+  schema: "ytrep"
+}
+
+
+select 
+    f.video_id as video_id,
+    f.category_id as category_id,
+    f.views_count as views_count,
+    f.likes as likes,
+    f.dislikes as dislikes,
+    f.comment_count as comment_count,
+    current_date() as start_date,
+    to_date('12-31-9999','mm-dd-yyyy') as end_date,
+    'Y' as valid_flag
+from
+ytstage.stg_raw_fact f, ytstage.stg_latest_record l
+where 
+f.video_id = l.video_id
+and f.trending_date = l.last_update
+
+union all
+
+select 
+    f.video_id,
+    f.category_id,
+    f.views_count,
+    f.likes,
+    f.dislikes,
+    f.comment_count,
+    current_date() as start_date,
+    current_date() as end_date,
+    'N' as valid_flag
+from
+ytstage.stg_raw_fact f, ytstage.stg_latest_record l
+where 
+f.video_id = l.video_id
+and f.trending_date <> l.last_update

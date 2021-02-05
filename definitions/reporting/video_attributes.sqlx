@@ -1,0 +1,16 @@
+config {
+  type: "table"
+  ,schema: "ytrep"
+}
+
+select 
+		VIDEO_ID
+		,TRENDING_DATE
+		,TITLE
+		,CHANNEL_TITLE
+		,CATEGORY_ID
+		,COMMENTS_DISABLED
+		,RATINGS_DISABLED
+		,VIDEO_ERROR_OR_REMOVED
+		,region
+from ytstage.stg_vid_attributes
