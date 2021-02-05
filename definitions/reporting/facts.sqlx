@@ -4,7 +4,7 @@ config {
 }
 
 
-select 
+select distinct
     f.video_id as video_id,
     f.category_id as category_id,
     f.views_count as views_count,

@@ -1,0 +1,22 @@
+config {
+  type: "view",
+  schema: "ytrep"
+}
+
+select 
+    v.video_id,
+    v.title as video_title,
+    to_date(v.publish_time) as publish_date,
+    c.category_id,
+    c.title as category_name,
+    f.views_count,
+    f.likes,
+    f.dislikes,
+    f.comment_count    
+from
+ytrep.videos v inner join ytrep.facts f
+on v.video_id = f.video_id
+inner join ytrep.category c
+on f.category_id = c.category_id
+where
+f.valid_flag = 'Y'
