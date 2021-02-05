@@ -12,4 +12,6 @@ select
   ,LIKES::number as LIKES
   ,DISLIKES::number as DISLIKES
   ,COMMENT_COUNT::number as COMMENT_COUNT
-from ytraw.raw_videos_csv
+from 
+  ${ref("raw_videos_csv")}
+  

@@ -2,7 +2,15 @@
   "environments": [
     {
       "name": "production",
-      "configOverride": {},
+      "configOverride": {
+        "defaultDatabase": "ytprod"
+      },
+      "schedules": [
+        {
+          "name": "new_schedule",
+          "cron": "15 12 * * *"
+        }
+      ],
       "gitRef": "master"
     }
   ]

@@ -8,4 +8,5 @@ select distinct
     video_id::varchar(255) as video_id,
     title as title,
     TO_TIMESTAMP_NTZ(PUBLISH_TIME) as PUBLISH_TIME
-    from "YTDEMO"."YTRAW"."RAW_VIDEOS_CSV"
+from 
+    ${ref("raw_videos_csv")} 

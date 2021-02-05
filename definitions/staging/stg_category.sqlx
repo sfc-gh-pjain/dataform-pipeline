@@ -1,6 +1,6 @@
 config {
-  type: "table"
-  ,schema: "ytstage"
+  type: "table",
+  schema: "ytstage"
 }
 
 SELECT DISTINCT
@@ -8,6 +8,6 @@ SELECT DISTINCT
         ,items.value:snippet:title::string as title
         ,items.value:snippet:assignable::BOOLEAN as assignable
 
-    FROM YTDEMO.YTRAW.RAW_CATEGORY_JSON
+    FROM ${ref("raw_category_json")}
         ,LATERAL FLATTEN (JSON_DATA:items) as items
 

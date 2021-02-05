@@ -1,0 +1,6 @@
+config {
+    type: "declaration",
+    schema: "ytraw",
+    name: "raw_category_json",
+    description: "Raw category table data"
+}
