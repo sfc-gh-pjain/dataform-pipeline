@@ -15,10 +15,10 @@ select distinct
     to_date('12-31-9999','mm-dd-yyyy') as end_date,
     'Y' as valid_flag
 from
-ytstage.stg_raw_fact f, ytstage.stg_latest_record l
+    ${ref("stg_raw_fact")} f, ${ref("stg_latest_record")} l
 where 
-f.video_id = l.video_id
-and f.trending_date = l.last_update
+    f.video_id = l.video_id
+    and f.trending_date = l.last_update
 
 union all
 
@@ -33,7 +33,7 @@ select
     current_date() as end_date,
     'N' as valid_flag
 from
-ytstage.stg_raw_fact f, ytstage.stg_latest_record l
+    ${ref("stg_raw_fact")} f, ${ref("stg_latest_record")} l
 where 
-f.video_id = l.video_id
-and f.trending_date <> l.last_update
+    f.video_id = l.video_id
+    and f.trending_date <> l.last_update

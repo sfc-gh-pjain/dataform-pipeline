@@ -13,4 +13,5 @@ select
 		,RATINGS_DISABLED
 		,VIDEO_ERROR_OR_REMOVED
 		,region
-from ytstage.stg_vid_attributes
+from 
+		${ref("stg_vid_attributes")}

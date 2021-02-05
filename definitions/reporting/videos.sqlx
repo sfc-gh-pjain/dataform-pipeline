@@ -4,8 +4,9 @@ config {
 }
 
 select 
-video_id,
-title,
-publish_time 
+  video_id,
+  title,
+  publish_time 
 
-from ytstage.stg_videos
+from 
+  ${ref("stg_videos")}

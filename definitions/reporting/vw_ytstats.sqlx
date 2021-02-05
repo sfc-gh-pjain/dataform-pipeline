@@ -14,9 +14,9 @@ select
     f.dislikes,
     f.comment_count    
 from
-ytrep.videos v inner join ytrep.facts f
-on v.video_id = f.video_id
-inner join ytrep.category c
-on f.category_id = c.category_id
+  ${ref("videos")} v inner join ${ref("facts")} f
+    on v.video_id = f.video_id
+  inner join ${ref("category")} c
+    on f.category_id = c.category_id
 where
-f.valid_flag = 'Y'
+  f.valid_flag = 'Y'

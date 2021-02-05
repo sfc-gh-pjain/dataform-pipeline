@@ -8,4 +8,5 @@ select distinct
   category_id,
   title,
   assignable
-from ytstage.stg_category
+from 
+  ${ref("stg_category")}
