@@ -5,6 +5,21 @@
       "configOverride": {
         "defaultDatabase": "ytprod"
       },
+      "schedules": [
+        {
+          "name": "PROD_FRIDAY230",
+          "cron": "33 19 * * fri",
+          "notify": [
+            {
+              "channel": "slack_notification_channel",
+              "statuses": [
+                "SUCCESS",
+                "FAILURE"
+              ]
+            }
+          ]
+        }
+      ],
       "gitRef": "master"
     }
   ],
