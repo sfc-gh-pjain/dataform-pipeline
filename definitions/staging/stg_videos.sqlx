@@ -1,0 +1,11 @@
+config {
+  type: "table",
+  schema: "ytstage"
+}
+
+
+select distinct
+    video_id::varchar(255) as video_id,
+    title as title,
+    region::varchar(5) as region
+    from "YTDEMO"."YTRAW"."RAW_VIDEOS_CSV"

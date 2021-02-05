@@ -1,0 +1,14 @@
+config {
+  type: "table",
+  schema: "ytstage"
+}
+
+-- select *
+-- from 
+--   ${ref("table_name")} / schema.table_name
+-- read more about ref() in the documentation tab -->
+
+select 
+video_id::varchar(255) as video_id
+,max(to_date(trending_date,'yy.dd.mm')) as last_update
+from ytdemo.ytraw.raw_videos_csv group by video_id
