@@ -4,9 +4,41 @@ config {
 }
 
 
+with vid as
+(
 select 
   video_id::varchar(255) as video_id
-  ,max(to_date(trending_date,'yy.dd.mm')) as last_update
-from 
-  ${ref("raw_videos_csv")} 
+  ,max(to_date(trending_date,'yy.dd.mm')) as last_update 
+from  
+ ${ref("raw_videos_csv")} 
+where video_id not in ('#NAME?')
 group by video_id
+
+  ),
+
+nam as
+(
+select distinct
+  video_id,
+  title as title,
+  TO_TIMESTAMP_NTZ(PUBLISH_TIME) as PUBLISH_TIME
+  ,to_date(trending_date,'yy.dd.mm') as last_update
+
+from  
+ ${ref("raw_videos_csv")} 
+
+  )  
+
+select t.video_id,t.last_update
+from vid t  left join nam v
+on t.video_id = v.video_id
+and t.last_update = v.last_update
+
+where 
+t.video_id not in (select video_id 
+					from 
+						${ref("raw_videos_csv")} 
+					where 
+						title in ('#NAME?','Deleted Video')
+						or video_error_or_removed = 'True'
+					)
